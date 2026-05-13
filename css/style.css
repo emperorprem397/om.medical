@@ -427,3 +427,18 @@ input,select,textarea,button{font-family:var(--font);}
   object-fit:cover !important;
   object-position:center top !important;
 }
+
+/* ── HERO BASKET IMAGE FIX ── */
+.hpv-store-img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+.hero-pharmacy-visual{
+  height:430px !important;
+  border-radius:20px !important;
+  background:#f0f6ff !important;
+  overflow:hidden !important;
+  box-shadow:0 20px 60px rgba(13,110,253,0.2) !important;
+}
