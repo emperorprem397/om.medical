@@ -54,6 +54,7 @@ input,select,textarea,button{font-family:var(--font);}
 .nav-inner{max-width:1240px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .logo-img{width:40px;height:40px;object-fit:contain;}
+.logo-svg{width:40px;height:40px;flex-shrink:0;}
 .logo-name{display:block;font-size:1rem;font-weight:800;color:var(--navy);line-height:1.1;}
 .logo-om{color:var(--blue);}
 .logo-tag{display:block;font-size:0.58rem;color:var(--gray400);letter-spacing:0.3px;}
@@ -71,7 +72,7 @@ input,select,textarea,button{font-family:var(--font);}
 .burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:0.3s;}
 
 /* ── HERO ── */
-.hero{background:var(--blue-xl);overflow:hidden;}
+.hero{background:linear-gradient(135deg,#f0f6ff 0%,#e8f4fd 50%,#dbeafe 100%);overflow:hidden;}
 .hero-inner{max-width:1240px;margin:0 auto;padding:48px 24px 0;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;min-height:480px;}
 .hero-trust-badge{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--gray200);color:var(--blue);font-size:0.78rem;font-weight:600;padding:6px 14px;border-radius:50px;margin-bottom:20px;box-shadow:var(--shadow1);}
 .hero-h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:900;color:var(--navy);line-height:1.08;letter-spacing:-1.5px;margin-bottom:18px;}
@@ -89,13 +90,64 @@ input,select,textarea,button{font-family:var(--font);}
 .hb-item span{display:block;font-size:0.72rem;color:var(--gray400);}
 
 /* Hero right */
-.hero-right{display:flex;justify-content:center;align-items:flex-end;padding-bottom:0;}
-.hero-img-wrap{position:relative;width:100%;max-width:460px;}
-.hero-store-img{width:100%;height:340px;object-fit:cover;border-radius:var(--r2) var(--r2) 0 0;box-shadow:var(--shadow3);}
-.hero-badge-float{position:absolute;bottom:16px;right:16px;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);padding:10px 14px;border-radius:var(--r);display:flex;align-items:center;gap:10px;box-shadow:var(--shadow2);}
-.hbf-logo{width:32px;height:32px;object-fit:contain;}
-.hero-badge-float strong{display:block;font-size:0.85rem;font-weight:800;color:var(--blue);}
-.hero-badge-float span{display:block;font-size:0.68rem;color:var(--gray400);}
+/* ── HERO RIGHT — PHARMACY VISUAL ── */
+.hero-right{display:flex;justify-content:center;align-items:center;padding-bottom:0;position:relative;}
+.hero-visual-wrap{width:100%;max-width:480px;position:relative;}
+.hero-pharmacy-visual{
+  position:relative;width:100%;height:420px;
+  border-radius:var(--r2);overflow:hidden;
+  background:linear-gradient(140deg,#dbeafe 0%,#e0f2fe 40%,#f0f9ff 100%);
+  box-shadow:var(--shadow3);
+}
+.hpv-bg-glow{
+  position:absolute;top:-60px;right:-60px;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(13,110,253,0.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hpv-store-img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center;opacity:0.92;
+  transition:transform 0.4s;
+}
+.hero-pharmacy-visual:hover .hpv-store-img{transform:scale(1.03);}
+
+/* Floating medicine icons */
+.hpv-shelf{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  pointer-events:none;z-index:2;
+  display:none; /* hidden — store image shows instead */
+}
+.hpv-medicine{
+  position:absolute;width:52px;height:52px;border-radius:14px;
+  background:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--blue);
+  box-shadow:0 4px 16px rgba(13,110,253,0.15);
+  animation:float 3s ease-in-out infinite;
+}
+.hpv-medicine.m1{top:12%;left:8%;animation-delay:0s;}
+.hpv-medicine.m2{top:25%;right:10%;animation-delay:0.4s;}
+.hpv-medicine.m3{top:55%;left:5%;animation-delay:0.8s;}
+.hpv-medicine.m4{top:70%;right:8%;animation-delay:1.2s;}
+.hpv-medicine.m5{top:40%;left:3%;animation-delay:0.6s;}
+.hpv-medicine.m6{bottom:15%;right:12%;animation-delay:1s;}
+
+/* Brand badge overlay on image */
+.hpv-brand-badge{
+  position:absolute;bottom:16px;right:16px;z-index:3;
+  background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);
+  padding:10px 14px;border-radius:var(--r);
+  display:flex;align-items:center;gap:10px;
+  box-shadow:0 4px 20px rgba(13,110,253,0.2);
+  border:1px solid rgba(13,110,253,0.1);
+}
+.hpv-brand-badge strong{display:block;font-size:0.88rem;font-weight:800;color:var(--blue);}
+.hpv-brand-badge span{display:block;font-size:0.7rem;color:var(--gray400);}
+
+/* Footer logo SVG */
+.ft-logo-svg{width:38px;height:38px;flex-shrink:0;}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 
 /* Quick bar */
 .hero-quick-bar{background:#fff;border-top:1px solid var(--gray200);box-shadow:0 4px 20px rgba(0,0,0,0.06);}
@@ -248,7 +300,7 @@ input,select,textarea,button{font-family:var(--font);}
 .footer-main{padding:56px 0 36px;}
 .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 0.8fr 1.4fr;gap:40px;}
 .ft-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.ft-logo-img{width:38px;height:38px;object-fit:contain;}
+.ft-logo-img{width:38px;height:38px;object-fit:contain;} .ft-logo-svg{width:38px;height:38px;flex-shrink:0;}
 .ft-nm{font-size:0.92rem;font-weight:800;color:#fff;}
 .ft-om{color:var(--blue);}
 .ft-tag{font-size:0.6rem;color:rgba(255,255,255,0.45);margin-top:1px;}
@@ -287,7 +339,7 @@ input,select,textarea,button{font-family:var(--font);}
 }
 @media(max-width:960px){
   .hero-inner{grid-template-columns:1fr;min-height:auto;padding-bottom:32px;}
-  .hero-right{display:none;}
+  .hero-visual-wrap{max-width:100%;} .hero-pharmacy-visual{height:280px;}
   .hqb-grid{grid-template-columns:repeat(2,1fr);}
   .why-grid{grid-template-columns:repeat(2,1fr);}
   .products-masonry{grid-template-columns:repeat(3,1fr);grid-template-rows:200px 200px;}
@@ -329,4 +381,49 @@ input,select,textarea,button{font-family:var(--font);}
   .why-grid{grid-template-columns:1fr;}
   .hero-badges{gap:14px;}
   .hero-btns{flex-direction:column;}
+}
+
+/* ── HERO EXACT REFERENCE FIX ── */
+.hero-inner{
+  max-width:1240px;margin:0 auto;
+  padding:56px 24px 0;
+  display:grid;grid-template-columns:1fr 1.1fr;
+  gap:32px;align-items:center;min-height:500px;
+}
+/* hero background — pure light blue like reference */
+.hero{
+  background:linear-gradient(to bottom right,#f0f6ff,#e2eeff,#dbeafe) !important;
+}
+/* Logo name style — exact "Om" bold + "medical store" light like reference */
+.logo-name{
+  font-size:1.02rem !important;font-weight:400 !important;
+  letter-spacing:0 !important;color:var(--navy) !important;
+}
+.logo-om{
+  font-weight:900 !important;color:var(--blue) !important;
+  font-size:1.08rem !important;
+}
+/* Nav active pill — exact blue bg */
+.nl.active{
+  background:var(--blue) !important;color:#fff !important;
+  border-radius:8px !important;
+}
+/* Hero h1 — match reference font weight and size */
+.hero-h1{
+  font-size:clamp(2.4rem,5vw,3.8rem) !important;
+  font-weight:900 !important;
+  line-height:1.05 !important;
+  letter-spacing:-1.5px !important;
+}
+/* Pharmacy visual image fills nicely */
+.hero-pharmacy-visual{
+  border-radius:20px !important;
+  overflow:hidden !important;
+  height:400px !important;
+  box-shadow:0 20px 60px rgba(13,110,253,0.18) !important;
+}
+.hpv-store-img{
+  width:100% !important;height:100% !important;
+  object-fit:cover !important;
+  object-position:center top !important;
 }
